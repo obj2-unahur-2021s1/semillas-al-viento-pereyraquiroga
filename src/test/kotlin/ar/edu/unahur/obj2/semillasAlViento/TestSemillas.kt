@@ -8,6 +8,9 @@ class SemillasTest : DescribeSpec({
     var plantaMenta = Menta(2021, 0.5F)
     var plantaSoja= Soja(2020, 0.6F,true)
 
+    var parcela=Parcela(12,20,8)
+    var parcelaAgricultora= Agricultora( mutableListOf<Parcela>())
+
     describe("Horas de sol que tolera"){
         it("planta de Menta"){
             plantaMenta.horasDeSolQueTolera().shouldBe(6)
@@ -32,5 +35,14 @@ class SemillasTest : DescribeSpec({
             plantaSoja.daSemillas().shouldBe(false)
         }
     }
+    describe("parcela"){
+        it("superficie"){
+            parcela.superficie().shouldBe(240)
+        }
+        it("cantidad Maxima de plantas que tolera"){
+            parcela.cantidadMaximaPlantas().shouldBe(100)
+        }
+    }
 
 })
+
