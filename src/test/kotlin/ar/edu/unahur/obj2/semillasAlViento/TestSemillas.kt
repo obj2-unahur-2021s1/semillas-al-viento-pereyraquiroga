@@ -16,4 +16,12 @@ class SemillasTest : DescribeSpec({
             plantaSoja.horasDeSolQueTolera().shouldBe(14)
         }
     }
+    describe("da semillas"){
+        it("planta de Menta"){
+            plantaMenta.daSemillas().shouldBe(false)
+        }
+        it("planta de soja"){
+            plantaSoja.daSemillas().shouldBe(false)
+        }
+    }
 })
