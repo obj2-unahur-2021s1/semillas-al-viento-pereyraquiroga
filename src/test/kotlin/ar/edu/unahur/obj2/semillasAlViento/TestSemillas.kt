@@ -18,7 +18,7 @@ class SemillasTest : DescribeSpec({
     }
     describe ("Es fuerte"){
         it("planta de menta"){
-            plantaMenta.esFuerte().shouldBe(true)
+            plantaMenta.esFuerte().shouldBe(false)
         }
         it("planta de Soja"){
             plantaSoja.esFuerte().shouldBe(true)
@@ -26,7 +26,7 @@ class SemillasTest : DescribeSpec({
     }
     describe("da semillas"){
         it("planta de Menta"){
-            plantaMenta.daSemillas().shouldBe(false)
+            plantaMenta.daSemillas().shouldBe(true)
         }
         it("planta de soja"){
             plantaSoja.daSemillas().shouldBe(false)
