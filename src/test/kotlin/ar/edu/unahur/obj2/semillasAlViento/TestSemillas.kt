@@ -4,12 +4,15 @@ import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
 
 class SemillasTest : DescribeSpec({
-
+    // PLANTAS
     var plantaMenta = Menta(2021, 0.5F)
     var plantaSoja= Soja(2020, 0.6F,true)
-
+    //PARCELAS
+    var parcelaPlantar=Parcela(20,12,20) // se usa en el metodo plantar
     var parcela=Parcela(12,20,8)
-    var parcelaAgricultora= Agricultora( mutableListOf<Parcela>())
+    // LISTAS PARCELAS
+    var parcelaLista= mutableListOf<Parcela>()
+    var parcelaagricultora=Agricultora(parcelaLista)
 
     describe("Horas de sol que tolera"){
         it("planta de Menta"){
@@ -42,7 +45,25 @@ class SemillasTest : DescribeSpec({
         it("cantidad Maxima de plantas que tolera"){
             parcela.cantidadMaximaPlantas().shouldBe(100)
         }
+        it("Plantar"){
+            parcelaPlantar.plantar(plantaSoja) // debe tirar un error.
+
+        }
+
+        it("parcela Agricola es semillera o no "){
+
+            parcelaagricultora.parcelasSemilleras() // tiene que dar false
+
+        }
+        it("Plantar estrategicamente"){
+            // No se puede hacer el test porque en el metodo plantarEstrategicamente(planta:Planta)
+            //NO USA EL METODO PLANTAR, POR LO TANTO AGREGA SIN
+            // VERIFICAR LOS PASOS DE PLANTAR() , ANTES DE AGREGAR.
+        }
+
+
     }
+
 
 })
 
