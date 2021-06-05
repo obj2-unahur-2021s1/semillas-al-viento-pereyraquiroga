@@ -13,7 +13,7 @@ class Parcela(val ancho: Int, val largo: Int, val horasSolPorDia: Int) {
     if (plantas.size == this.cantidadMaximaPlantas()) {
       throw error("LA PARCELA ESTA LLENA ")
     } else if (horasSolPorDia > planta.horasDeSolQueTolera() + 2) {
-      println("No se puede plantar esto acá, se va a quemar")
+      throw error("No se puede plantar esto acá, se va a quemar")
     } else {
       plantas.add(planta)
 
@@ -24,7 +24,7 @@ class Parcela(val ancho: Int, val largo: Int, val horasSolPorDia: Int) {
 class Agricultora(val parcelas: MutableList<Parcela>) {
 
   fun parcelasSemilleras() =
-    parcelas.filter { parcela -> parcela.plantas.all {
+    parcelas.all { it.plantas.all {
         planta -> planta.daSemillas()
       }
     }
@@ -33,4 +33,5 @@ class Agricultora(val parcelas: MutableList<Parcela>) {
  // fun laElegida():Parcela= parcelas.maxBy { it.cantidadMaximaPlantas() - it.plantas.size } // DEVUELVE LA PARCELA QUE TIENE MAS LUGAR
   //fun plantarEstrategicamente(planta: Planta) = laElegida().plantar(planta)
 
+  //FALTA ESTE METODO ARREGLARLO
   }

@@ -10,7 +10,9 @@ class SemillasTest : DescribeSpec({
     //PARCELAS
     var parcelaPlantar=Parcela(20,12,20) // se usa en el metodo plantar
     var parcela=Parcela(12,20,8)
+
     // LISTAS PARCELAS
+    var parcelaPlantas= mutableListOf<Planta>()
     var parcelaLista= mutableListOf<Parcela>()
     var parcelaagricultora=Agricultora(parcelaLista)
 
@@ -45,14 +47,19 @@ class SemillasTest : DescribeSpec({
         it("cantidad Maxima de plantas que tolera"){
             parcela.cantidadMaximaPlantas().shouldBe(100)
         }
+        it ("tiene complicaciones"){
+            parcelaPlantas.add(plantaSoja)
+            parcela.parcelaTieneComplicaciones(parcela).shouldBe(false)
+        }
         it("Plantar"){
-            parcelaPlantar.plantar(plantaSoja) // debe tirar un error.
+            parcelaPlantar.plantar(plantaSoja) // tira tirar un error de porque no se puede.
 
         }
 
         it("parcela Agricola es semillera o no "){
-
-            parcelaagricultora.parcelasSemilleras().shouldBe(false) // tiene que dar false ARREGLAR
+            parcelaPlantas.add(plantaMenta)
+            parcelaagricultora.parcelasSemilleras().shouldBe(true) // ARREGLAR PARA QUE TIRE FALSE TMB
+                                                                            // CUANDO SUS PLANTAS NO SON SEMILLERAS
 
         }
         it("Plantar estrategicamente"){
