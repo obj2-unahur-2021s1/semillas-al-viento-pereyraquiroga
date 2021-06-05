@@ -52,7 +52,7 @@ class SemillasTest : DescribeSpec({
 
         it("parcela Agricola es semillera o no "){
 
-            parcelaagricultora.parcelasSemilleras() // tiene que dar false
+            parcelaagricultora.parcelasSemilleras().shouldBe(false) // tiene que dar false ARREGLAR
 
         }
         it("Plantar estrategicamente"){
