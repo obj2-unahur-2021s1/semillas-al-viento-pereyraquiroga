@@ -1,20 +1,21 @@
 package ar.edu.unahur.obj2.semillasAlViento
 
+import io.kotest.assertions.throwables.shouldThrowAny
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
 
 class SemillasTest : DescribeSpec({
     // PLANTAS
-    var plantaMenta = Menta(2021, 0.5F)
-    var plantaSoja= Soja(2020, 0.6F,true)
+    val plantaMenta = Menta(2021, 0.5F)
+    val plantaSoja= Soja(2020, 0.6F,true)
     //PARCELAS
-    var parcelaPlantar=Parcela(20,12,20) // se usa en el metodo plantar
-    var parcela=Parcela(12,20,8)
+    val parcelaPlantar=Parcela(20,12,20)
+    val parcela=Parcela(12,20,8)
 
     // LISTAS PARCELAS
-    var parcelaPlantas= mutableListOf<Planta>()
-    var parcelaLista= mutableListOf<Parcela>()
-    var parcelaagricultora=Agricultora(parcelaLista)
+    val parcelaPlantas= mutableListOf<Planta>()
+    val parcelaLista= mutableListOf<Parcela>()
+    val parcelaagricultora=Agricultora(parcelaLista)
 
     describe("Horas de sol que tolera"){
         it("planta de Menta"){
@@ -52,8 +53,9 @@ class SemillasTest : DescribeSpec({
             parcela.parcelaTieneComplicaciones(parcela).shouldBe(false)
         }
         it("Plantar"){
-            parcelaPlantar.plantar(plantaSoja) // tira tirar un error de porque no se puede.
-
+            shouldThrowAny {
+                parcelaPlantar.plantar(plantaSoja)
+            }
         }
 
         it("parcela Agricola es semillera o no "){
