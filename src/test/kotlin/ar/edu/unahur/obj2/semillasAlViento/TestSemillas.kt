@@ -11,11 +11,12 @@ class SemillasTest : DescribeSpec({
     //PARCELAS
     val parcelaPlantar=Parcela(20,12,20)
     val parcela=Parcela(12,20,8)
+    val parcela2=Parcela(12,20,8)
 
     // LISTAS PARCELAS
     val parcelaPlantas= mutableListOf<Planta>()
     val parcelaLista= mutableListOf<Parcela>()
-    val parcelaagricultora=Agricultora(parcelaLista)
+    val parcelaAgricultora=Agricultora(parcelaLista)
 
     describe("Horas de sol que tolera"){
         it("planta de Menta"){
@@ -59,15 +60,17 @@ class SemillasTest : DescribeSpec({
         }
 
         it("parcela Agricola es semillera o no "){
-            parcelaPlantas.add(plantaMenta)
-            parcelaagricultora.parcelasSemilleras().shouldBe(true) // ARREGLAR PARA QUE TIRE FALSE TMB
-                                                                            // CUANDO SUS PLANTAS NO SON SEMILLERAS
+            parcelaAgricultora.parcelasSemilleras().shouldBe(true)
+            parcela2.plantar(plantaSoja)
+            parcelaLista.add(parcela2)
+            parcelaAgricultora.parcelasSemilleras().shouldBe(false)
 
         }
         it("Plantar estrategicamente"){
             // No se puede hacer el test porque en el metodo plantarEstrategicamente(planta:Planta)
             //NO USA EL METODO PLANTAR, POR LO TANTO AGREGA SIN
             // VERIFICAR LOS PASOS DE PLANTAR() , ANTES DE AGREGAR.
+
         }
 
 
