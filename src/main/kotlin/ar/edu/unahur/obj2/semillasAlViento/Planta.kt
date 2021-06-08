@@ -1,10 +1,9 @@
 package ar.edu.unahur.obj2.semillasAlViento
 
-abstract class Planta(val anioObtencionSemilla: Int, var altura: Float) {
+abstract class Planta(val anioObtencionSemilla: Int, val altura: Float) {
   fun esFuerte() = this.horasDeSolQueTolera() > 10
 
-  fun parcelaTieneComplicaciones(parcela: Parcela) =
-    parcela.plantas.any { it.horasDeSolQueTolera() < parcela.horasSolPorDia }
+
 
   abstract fun horasDeSolQueTolera(): Int
   abstract fun daSemillas(): Boolean
@@ -27,6 +26,10 @@ class Soja(anioObtencionSemilla: Int, altura: Float, val esTransgenica: Boolean)
 
     return if (esTransgenica) horasBase * 2 else horasBase
   }
+
+
+
+
 
 
   override fun daSemillas(): Boolean  {
