@@ -3,6 +3,8 @@ package ar.edu.unahur.obj2.semillasAlViento
 class Parcela(val ancho: Int, val largo: Int, val horasSolPorDia: Int) {
   val plantas = mutableListOf<Planta>()
 
+
+  fun cantidadPlantas()= plantas.size
   fun parcelaTieneComplicaciones(parcela: Parcela) =
     parcela.plantas.any { it.horasDeSolQueTolera() < parcela.horasSolPorDia }
   fun superficie() = ancho * largo
@@ -30,8 +32,11 @@ class Agricultora(val parcelas: MutableList<Parcela>) {
     }
 
 
- // fun laElegida():Parcela= parcelas.maxBy { it.cantidadMaximaPlantas() - it.plantas.size } // DEVUELVE LA PARCELA QUE TIENE MAS LUGAR
-  //fun plantarEstrategicamente(planta: Planta) = laElegida().plantar(planta)
 
-  //FALTA ESTE METODO ARREGLARLO
-  }
+  fun parcelaMaximoEspacio()=   parcelas.maxBy { it.cantidadMaximaPlantas() - it.cantidadPlantas() }
+   fun plantarEstrategicamente(planta: Planta) {
+
+     parcelaMaximoEspacio()?.plantar(planta)
+   }
+
+}

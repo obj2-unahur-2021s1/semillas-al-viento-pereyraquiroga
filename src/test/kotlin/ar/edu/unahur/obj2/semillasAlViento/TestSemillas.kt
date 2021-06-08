@@ -12,7 +12,7 @@ class SemillasTest : DescribeSpec({
     val parcelaPlantar=Parcela(20,12,20)
     val parcela=Parcela(12,20,8)
     val parcela2=Parcela(12,20,8)
-
+    val parcela3=Parcela(20,10,2)
     // LISTAS PARCELAS
     val parcelaPlantas= mutableListOf<Planta>()
     val parcelaLista= mutableListOf<Parcela>()
@@ -54,6 +54,7 @@ class SemillasTest : DescribeSpec({
             parcela.parcelaTieneComplicaciones(parcela).shouldBe(false)
         }
         it("Plantar"){
+            // TIRA ERROR PORQUE SE QUEMA NO SE PUEDE PLANTAR
             shouldThrowAny {
                 parcelaPlantar.plantar(plantaSoja)
             }
@@ -66,13 +67,17 @@ class SemillasTest : DescribeSpec({
             parcelaAgricultora.parcelasSemilleras().shouldBe(false)
 
         }
-        it("Plantar estrategicamente"){
-            //gyvgvyuyuy
-            // No se puede hacer el test porque en el metodo plantarEstrategicamente(planta:Planta)
-            //NO USA EL METODO PLANTAR, POR LO TANTO AGREGA SIN
-            // VERIFICAR LOS PASOS DE PLANTAR() , ANTES DE AGREGAR.
-
+        it("Plantar estrategicamente"){ // ANTES NO SE PODIA PORQUE EL METODO NO USABA EL METODO PLANTAR
+            val parcelaEstrategica=Parcela(12,20,2)
+            parcelaEstrategica.plantar(plantaSoja)
+            parcela3.plantar(plantaMenta)
+            parcelaLista.add(parcelaEstrategica) // cantidad maxima de plantas 100 -1= 99, 1 es la que le agregamos arriba .
+            parcelaLista.add(parcela3)//cantidad maxima de plantas 40 -1 = 39, 1 es la planta que le agregamos arriba
+            parcelaAgricultora.plantarEstrategicamente(plantaMenta)
+            parcelaEstrategica.cantidadPlantas().shouldBe(2) // LA PLANTA EN LA PARCELA ESTA PORQUE ES LA QUE
+                                                                     // TIENE CANTIDAD MAXIMA DE PLANTAS.
         }
+
 
 
     }

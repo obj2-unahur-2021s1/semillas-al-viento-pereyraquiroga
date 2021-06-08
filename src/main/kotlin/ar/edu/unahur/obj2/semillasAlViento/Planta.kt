@@ -1,7 +1,6 @@
 package ar.edu.unahur.obj2.semillasAlViento
 
-abstract class Planta(val anioObtencionSemilla: Int, val altura: Float) { // MUTACIONES CONTROLADAS: DEBERIA SER VAL ALTURA
-                                                                          // PORQUE EN EL ENUNCIADO DICE QUE NO CAMBIA.
+abstract class Planta(val anioObtencionSemilla: Int, val altura: Float) {
   fun esFuerte() = this.horasDeSolQueTolera() > 10
 
 
@@ -27,6 +26,10 @@ class Soja(anioObtencionSemilla: Int, altura: Float, val esTransgenica: Boolean)
 
     return if (esTransgenica) horasBase * 2 else horasBase
   }
+
+
+
+
 
 
   override fun daSemillas(): Boolean  {
