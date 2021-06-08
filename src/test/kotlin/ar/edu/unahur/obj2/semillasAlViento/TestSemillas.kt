@@ -67,6 +67,7 @@ class SemillasTest : DescribeSpec({
 
         }
         it("Plantar estrategicamente"){
+            //gyvgvyuyuy
             // No se puede hacer el test porque en el metodo plantarEstrategicamente(planta:Planta)
             //NO USA EL METODO PLANTAR, POR LO TANTO AGREGA SIN
             // VERIFICAR LOS PASOS DE PLANTAR() , ANTES DE AGREGAR.
